@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-sans antialiased bg-surface-50 text-gray-900 dark:bg-surface-950 dark:text-gray-100 transition-colors duration-300;
+  }
+
+  input, select, textarea {
+    @apply outline-none;
+  }
+
+  /* Remove number input spinners */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white dark:bg-surface-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 p-4 transition-all duration-200;
+  }
+
+  .card-glass {
+    @apply bg-white/80 dark:bg-surface-800/80 backdrop-blur-xl rounded-2xl shadow-lg border border-white/20 dark:border-gray-700/30 p-4 transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-primary-500 hover:bg-primary-600 active:scale-[0.97] text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 shadow-lg shadow-primary-500/25;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-100 dark:bg-surface-700 hover:bg-gray-200 dark:hover:bg-surface-600 active:scale-[0.97] text-gray-700 dark:text-gray-200 font-medium py-3 px-6 rounded-xl transition-all duration-200;
+  }
+
+  .btn-danger {
+    @apply bg-rose-500 hover:bg-rose-600 active:scale-[0.97] text-white font-semibold py-3 px-6 rounded-xl transition-all duration-200 shadow-lg shadow-rose-500/25;
+  }
+
+  .input-field {
+    @apply w-full bg-gray-50 dark:bg-surface-700 border border-gray-200 dark:border-gray-600 rounded-xl px-4 py-3 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 transition-all duration-200;
+  }
+
+  .gradient-income {
+    @apply bg-gradient-to-br from-emerald-400 to-emerald-600;
+  }
+
+  .gradient-expense {
+    @apply bg-gradient-to-br from-rose-400 to-rose-600;
+  }
+
+  .gradient-balance {
+    @apply bg-gradient-to-br from-primary-400 to-primary-700;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Page transition */
+.page-enter {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
