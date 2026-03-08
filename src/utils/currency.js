@@ -15,6 +15,8 @@ export function formatCurrency(amount, currencyCode = 'USD') {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: currency.code,
+      notation: Math.abs(amount) >= 10000 ? 'compact' : 'standard',
+      compactDisplay: 'short',
       minimumFractionDigits: 0,
       maximumFractionDigits: 2,
     }).format(amount);
