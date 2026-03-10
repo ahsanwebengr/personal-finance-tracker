@@ -68,7 +68,7 @@ export function useTransactions(filters = {}) {
   };
 }
 
-export function useTransactionStats() {
+export function useTransactionStats(targetDate = new Date()) {
   const stats = useLiveQuery(async () => {
     const all = await db.transactions.toArray();
 
@@ -80,7 +80,7 @@ export function useTransactionStats() {
       .filter(t => t.type === 'expense')
       .reduce((sum, t) => sum + t.amount, 0);
 
-    const now = new Date();
+    const now = new Date(targetDate);
     const monthStart = new Date(now.getFullYear(), now.getMonth(), 1).toISOString().split('T')[0];
     const monthEnd = new Date(now.getFullYear(), now.getMonth() + 1, 0).toISOString().split('T')[0];
 
@@ -132,7 +132,7 @@ export function useTransactionStats() {
       categoryBreakdown,
       monthlyTrends,
     };
-  });
+  }, [targetDate.toISOString().split('T')[0]]);
 
   return { stats: stats || null, isLoading: stats === undefined };
 }
