@@ -1,7 +1,7 @@
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
 
-export default function Select({ value, onChange, options, className = '', label, ...props }) {
+export default function Select({ value, onChange, options, className = '', selectClassName = '', label, ...props }) {
     return (
         <div className={`relative ${className}`}>
             {label && <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{label}</label>}
@@ -9,7 +9,7 @@ export default function Select({ value, onChange, options, className = '', label
                 <select
                     value={value}
                     onChange={(e) => onChange(e.target.value)}
-                    className="input-field appearance-none cursor-pointer pr-10"
+                    className={`input-field appearance-none cursor-pointer pr-10 ${selectClassName}`}
                     {...props}
                 >
                     {options.map((opt) => (

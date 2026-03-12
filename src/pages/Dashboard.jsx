@@ -92,11 +92,12 @@ export default function Dashboard() {
                         <CalendarDays className="w-4 h-4 text-primary-500" />
                         <h2 className="font-semibold text-sm text-gray-700 dark:text-gray-300">Monthly Summary</h2>
                     </div>
-                    <div className="w-40">
+                    <div className="w-32">
                         <Select
                             value={selectedDateValue}
                             onChange={setSelectedDateValue}
                             options={monthOptions}
+                            selectClassName="!py-2.5 !pl-3 !pr-8 text-xs font-semibold"
                         />
                     </div>
                 </div>

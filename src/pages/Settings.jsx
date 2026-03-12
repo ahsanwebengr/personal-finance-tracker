@@ -8,6 +8,7 @@ import {
   Download, Upload, Moon, Sun, DollarSign, Trash2, AlertTriangle,
   CheckCircle2, Info,
 } from 'lucide-react';
+import Select from '@/components/Select';
 
 export default function Settings() {
   const { isDark, toggleTheme } = useTheme();
@@ -160,18 +161,16 @@ export default function Settings() {
         <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">Currency</h2>
         <div className="flex items-center gap-3 mb-2">
           <DollarSign className="w-5 h-5 text-primary-500" />
-          <select
+          <Select
             value={currency}
-            onChange={e => setCurrency(e.target.value)}
-            className="input-field flex-1"
+            onChange={setCurrency}
+            className="flex-1"
+            options={currencies.map(c => ({
+              label: `${c.symbol} ${c.name} (${c.code})`,
+              value: c.code
+            }))}
             id="select-currency"
-          >
-            {currencies.map(c => (
-              <option key={c.code} value={c.code}>
-                {c.symbol} {c.name} ({c.code})
-              </option>
-            ))}
-          </select>
+          />
         </div>
       </div>
 
